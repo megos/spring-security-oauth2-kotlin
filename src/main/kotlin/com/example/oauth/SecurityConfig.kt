@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
+import org.springframework.security.crypto.password.NoOpPasswordEncoder
 
 @Configuration
 @EnableWebSecurity
@@ -26,5 +27,14 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
     @Bean
     override fun authenticationManagerBean(): AuthenticationManager {
         return super.authenticationManagerBean()
+    }
+
+    // TODO: For example
+    // See. https://yusuke.blog/2018/03/02/2163
+    //      https://www.harinathk.com/spring/no-passwordencoder-mapped-id-null/
+    @Suppress("deprecation")
+    @Bean
+    fun passwordEncoder(): NoOpPasswordEncoder {
+        return NoOpPasswordEncoder.getInstance() as NoOpPasswordEncoder
     }
 }
