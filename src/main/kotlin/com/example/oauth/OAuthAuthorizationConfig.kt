@@ -48,5 +48,4 @@ class OAuthAuthorizationConfig : AuthorizationServerConfigurerAdapter() {
     override fun configure(security: AuthorizationServerSecurityConfigurer) {
         security.allowFormAuthenticationForClients()
     }
-
 }
