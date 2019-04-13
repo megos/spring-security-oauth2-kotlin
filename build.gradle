@@ -44,7 +44,7 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
 	compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
 	testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
-	testCompile("org.springframework.security:spring-security-test:${springBootVersion}")
+	testCompile("org.springframework.security:spring-security-test:${springSecurityVersion}")
 	ktlint("com.github.shyiko:ktlint:${ktlintVersion}")
 }
 
