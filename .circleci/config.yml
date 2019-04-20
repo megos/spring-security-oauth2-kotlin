@@ -40,3 +40,6 @@ jobs:
 
       # run tests!
       - run: gradle ktlint
+
+      # run build!
+      - run: gradle build
