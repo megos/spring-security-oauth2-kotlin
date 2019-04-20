@@ -1,6 +1,8 @@
 # spring-security-oauth2-kotlin
 Spring Security OAuth2 example made with Kotlin
 
+[![CircleCI](https://circleci.com/gh/megos/spring-security-oauth2-kotlin.svg?style=svg)](https://circleci.com/gh/megos/spring-security-oauth2-kotlin)
+
 ## Requirement
 - Java 1.8
 - Gradle
