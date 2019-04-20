@@ -12,11 +12,14 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 class OAuthResourceConfig : ResourceServerConfigurerAdapter() {
 
     override fun configure(resources: ResourceServerSecurityConfigurer) {
+        // OAuthAuthorizationConfigで利用するリソースIDの設定
         resources.resourceId("my_resource_id")
     }
 
     override fun configure(http: HttpSecurity) {
+        // アクセス権限の設定
         http.authorizeRequests()
+                // GETにはreadスコープが必要
                 .antMatchers(HttpMethod.GET, "/**").access("#oauth2.hasScope('read')")
     }
 }
