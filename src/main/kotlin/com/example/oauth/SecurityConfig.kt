@@ -14,11 +14,15 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder
 class SecurityConfig : WebSecurityConfigurerAdapter() {
 
     override fun configure(auth: AuthenticationManagerBuilder) {
+        // 今回はインメモリだが、ここでDBから読み込んだユーザを指定できる
+        // auth.userDetailsService()...
         auth.inMemoryAuthentication()
+                // .withUser().password().roles()のセットでユーザを追加していく
                 .withUser("user").password("password").roles("USER")
     }
 
     override fun configure(http: HttpSecurity) {
+        // リクエストにBasic認証を掛ける
         http.authorizeRequests()
                 .anyRequest().authenticated()
                 .and().httpBasic().realmName("OAuth Server")
@@ -35,6 +39,8 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
     @Suppress("deprecation")
     @Bean
     fun passwordEncoder(): NoOpPasswordEncoder {
+        // Spring Boot 2から平文パスワードの場合Exceptionが発生する
+        // 今回はサンプルのため、平文パスワード許可する
         return NoOpPasswordEncoder.getInstance() as NoOpPasswordEncoder
     }
 }
