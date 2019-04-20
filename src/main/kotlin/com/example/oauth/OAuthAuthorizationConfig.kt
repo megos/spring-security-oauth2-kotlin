@@ -30,11 +30,13 @@ class OAuthAuthorizationConfig : AuthorizationServerConfigurerAdapter() {
     lateinit var authenticationManager: AuthenticationManager
 
     override fun configure(endpoints: AuthorizationServerEndpointsConfigurer) {
+        // OAuthのTokenをインメモリで管理
         endpoints.tokenStore(tokenStore())
                 .authenticationManager(authenticationManager)
     }
 
     override fun configure(clients: ClientDetailsServiceConfigurer) {
+        // OAuth認証用のクライアント（アプリケーション）の設定
         clients.inMemory()
                 .withClient("client_id")
                 .secret("client_secret")
@@ -46,6 +48,7 @@ class OAuthAuthorizationConfig : AuthorizationServerConfigurerAdapter() {
     }
 
     override fun configure(security: AuthorizationServerSecurityConfigurer) {
+        // Basic認証だけでなくPOSTのbodyでの認証を許可する
         security.allowFormAuthenticationForClients()
     }
 }
