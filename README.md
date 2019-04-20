@@ -22,7 +22,13 @@ $ gradle bootRun
 ```
 2. Exec auth
 ```bash
-$ curl -X POST -d client_id=client_id -d client_secret=client_secret -d grant_type=password -d username=user -d password=password http://localhost:8080/oauth/token
+$ curl -X POST \
+-d client_id=client_id \
+-d client_secret=client_secret \
+-d grant_type=password \
+-d username=user \
+-d password=password \
+http://localhost:8080/oauth/token
 {"access_token":"[your_access_token]","token_type":"bearer","expires_in":43199,"scope":"read"}
 ```
 3. GET resource
